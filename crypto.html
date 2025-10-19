@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Примеры работ</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1 id="vertical-title">GAMBLING</h1>
+        <button onclick="window.location.href='index.html'">Назад</button>
+    </header>
+
+    <main>
+        <section id="examples">
+            <div class="video-card">
+                <video controls>
+                    <source src="pi/CRYPTO/mrtnvtr.mp4" type="video/mp4">
+                    Ваш браузер не поддерживает видео.
+                </video>
+                <h4>Пример 1</h4>
+                <p>Цена: $40 | Гео: Европа | Время работы: 2 час</p>
+            </div>
+            <div class="video-card">
+                <video controls>
+                    <source src="pi/CRYPTO/wbcoinprjct.mp4" type="video/mp4">
+                </video>
+                <h4>Пример 2</h4>
+                <p>Цена: $40 | Гео: СНГ | Время работы: Полтора часа</p>
+            </div>
+            <div class="video-card">
+                <video controls>
+                    <source src="pi/CRYPTO/900x1600nvtr.mp4" type="video/mp4">
+                </video>
+                <h4>Пример 3</h4>
+                <p>Цена: $40 | Гео: Казахстан | Время работы: Полтора часа</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        
+   <button onclick="window.location.href='https://t.me/PinexCreoManager'">Заказать в Telegram</button>
+
+
+    </footer>
+
+    <footer>
+        <p>© 2025 Услуги Дизайна</p>
+       
+    </footer>
+
+    <script>
+        // Смена названия вертикали по параметру URL
+        const params = new URLSearchParams(window.location.search);
+        const cat = params.get('cat');
+        const titleMap = {
+            gambling: 'GAMBLING',
+            reels: 'REELS/TIKTOK',
+            traffic: 'СХЕМНЫЙ ТРАФИК',
+            crypto: 'КРИПТА',
+            phishing: 'ФИШИНГ',
+            stickers: 'СТИКЕРЫ ТГ',
+            white: 'Белые темы'
+        };
+        document.getElementById('vertical-title').innerText = titleMap[cat] || 'КРИПТА';
+    </script>
+</body>
+</html>

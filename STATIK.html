@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Примеры работ</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <script>
+document.addEventListener('DOMContentLoaded', function () {
+  const modal = document.getElementById('imageModal');
+  const modalImg = document.getElementById('modalImage');
+
+  // используем делегирование: выбираем все изображения с классом clickable-img
+  const imgs = document.querySelectorAll('.clickable-img');
+  imgs.forEach(img => {
+    img.addEventListener('click', function (e) {
+      // показываем модалку с тем же src (или data-large, если хочешь загрузить больший вариант)
+      modalImg.src = this.dataset.large || this.src;
+      modal.style.display = 'flex';
+      modal.setAttribute('aria-hidden', 'false');
+      // запретить скролл страницы, если нужно
+      document.body.style.overflow = 'hidden';
+    });
+  });
+
+  // закрываем модал при клике по затемнению (не по самому изображению)
+  modal.addEventListener('click', function (e) {
+    if (e.target === modal) {
+      modal.style.display = 'none';
+      modalImg.src = '';
+      modal.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    }
+  });
+
+  // ESC для закрытия
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && modal.style.display === 'flex') {
+      modal.style.display = 'none';
+      modalImg.src = '';
+      document.body.style.overflow = '';
+    }
+  });
+});
+</script>
+
+    <header>
+        <h1 id="vertical-title">GAMBLING</h1>
+        <button onclick="window.location.href='index.html'">Назад</button>
+    </header>
+
+    <main>
+       <section id="examples">
+  <div class="examples-container">
+    <div class="img-card">
+      <img src="pi/STAT/8.png" alt="Пример 1" class="clickable-img" />
+      <h4>Пример 1</h4>
+      <p>Цена: $10 | Гео: Кения | Время работы: 30 минут</p>
+    </div>
+
+    <div class="img-card">
+      <img src="pi/STAT/nmark.png" alt="Пример 2" class="clickable-img" />
+      <h4>Пример 2</h4>
+      <p>Цена: $10 | Гео: Бразилия | Время работы: 30 минут</p>
+    </div>
+
+    <div class="img-card">
+      <img src="pi/STAT/novd.png" alt="Пример 3" class="clickable-img" />
+      <h4>Пример 3</h4>
+      <p>Цена: $10 | Гео: Польша | Время работы: 30 минут</p>
+    </div>
+    <!-- добавляй ещё карточки по образцу -->
+  </div>
+</section>
+
+<!-- Модальное окно для увеличенного изображения (один раз внизу документа) -->
+<div id="imageModal" class="image-modal" aria-hidden="true">
+  <img id="modalImage" src="" alt="Preview" />
+</div>
+
+    </main>
+
+    <footer>
+        
+   <button onclick="window.location.href='https://t.me/PinexCreoManager'">Заказать в Telegram</button>
+
+
+    </footer>
+
+    <footer>
+        <p>© 2025 Услуги Дизайна</p>
+       
+    </footer>
+
+    <script>
+        // Смена названия вертикали по параметру URL
+        const params = new URLSearchParams(window.location.search);
+        const cat = params.get('cat');
+        const titleMap = {
+            gambling: 'GAMBLING',
+            reels: 'REELS/TIKTOK',
+            traffic: 'СХЕМНЫЙ ТРАФИК',
+            crypto: 'КРИПТА',
+            phishing: 'ФИШИНГ',
+            stickers: 'СТИКЕРЫ ТГ',
+            white: 'Белые темы'
+        };
+        document.getElementById('vertical-title').innerText = titleMap[cat] || 'СТАТИКА';
+    </script>
+</body>
+</html>
